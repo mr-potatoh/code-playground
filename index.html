@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+    <script src="https://unpkg.com/@emmetio/monaco-plugin/dist/monaco-emmet.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- <link rel="stylesheet" href="normalize.css"> -->
+</head>
+<body>
+<div id="small-screen"><h1>⚠︎</h1><p>Oops! This site looks best on tablets or desktops. Please switch to a bigger screen!</p></div>
+<main class="main-container">
+    <div class="btn-container">
+        <div class="rightSide">
+        <button id="html-btn" class="btn active">HTML</button>
+        <button id="css-btn" class="btn">CSS</button>
+        <button id="js-btn" class="btn">JS</button>
+        <button id="copy-btn" class="btn" title="alt + C">Copy</button>
+    </div>
+    <div class="leftSide">
+        <button id="theme-btn" class="btn"><span></span>Dark</button>
+        <button id="run-btn" class="btn" title="alt + enter">Run</button>
+        <button id="win-btn" class="btn">Run in a new window</button>
+    </div>
+    </div>
+
+    <div class="editor-iframe-container">
+        <div id="monaco-editor">
+            <div id="html"></div>
+            <div id="css"></div>
+            <div id="js"></div>
+        </div>
+
+        <div id="iframe"></div>
+    </div>
+</main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+

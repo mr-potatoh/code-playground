@@ -1,0 +1,133 @@
+:root {
+  --theme-color: #242424;
+  --primary-color: #91dd70ff;
+  --text-color: #fff;
+  --btn-bg: #333;
+  --active-bg: #ddd;
+  --active-color: #000;
+  --icon-color: #fff;
+  --border-color: #ddd;
+  --iframe-bg: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100dvh;
+  width: 100vw;
+  background: var(--theme-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Small screen fallback */
+#small-screen {
+  display: none;
+  height: 100dvh;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--theme-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+#small-screen h1 {
+  font-size: 8rem;
+  font-weight: 400;
+}
+
+#small-screen p {
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 300px;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+/* Main layout */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100vw;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 0.1px solid var(--text-color);
+}
+
+.btn {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background: var(--btn-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.btn.active {
+  background: var(--active-bg);
+  color: var(--active-color);
+}
+
+/* Special buttons */
+#run-btn,
+#win-btn {
+  background: var(--primary-color);
+  color: var(--active-color);
+}
+
+#theme-btn {
+  background: var(--text-color);
+  color: var(--theme-color);
+}
+
+#theme-btn span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--theme-color);
+  margin-right: 5px;
+}
+
+/* Editor + iframe */
+.editor-iframe-container {
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+#monaco-editor,
+#iframe {
+  flex: 4;
+  height: 100%;
+  min-width: 0;
+}
+
+#iframe {
+  border-left: 1px solid var(--border-color);
+  background: var(--iframe-bg);
+  overflow: hidden;
+}
+
+#html,
+#css,
+#js {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Small screen rule */
+@media (max-width: 630px) {
+  .main-container { display: none; }
+  #small-screen { display: flex; }
+}
