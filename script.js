@@ -1,7 +1,13 @@
 let htmlCode;
 let cssCode;
 let jsCode;
-let theme = "vs-dark";
+let theme;
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  theme = "vs-dark";
+} else {
+  theme = "vs-light";
+}
 
 require.config({
   paths: { vs: "https://unpkg.com/monaco-editor@latest/min/vs" },
@@ -146,29 +152,39 @@ const root = document.documentElement;
 themeBtn.addEventListener("click", function () {
   if (theme === "vs-dark") {
     theme = "vs-light";
-    root.style.setProperty("--theme-color", "#fffffe");
-    root.style.setProperty("--text-color", "#000000");
-    root.style.setProperty("--btn-bg", "#e0e0e0");
-    root.style.setProperty("--active-bg", "#242424");
-    root.style.setProperty("--active-color", "#ffffff");
-    root.style.setProperty("--icon-color", "#242424");
-    root.style.setProperty("--border-color", "#ddd");
-    root.style.setProperty("--iframe-bg", "#fff");
-    root.style.setProperty("--primary-color", "#659e4dff");
-    themeBtn.innerHTML = '<span></span>Light';
     monaco.editor.setTheme("vs-light");
+    theming();
   } else {
     theme = "vs-dark";
-    root.style.setProperty("--theme-color", "#242424");
-    root.style.setProperty("--text-color", "#ffffff");
-    root.style.setProperty("--btn-bg", "#333");
-    root.style.setProperty("--active-bg", "#fff");
-    root.style.setProperty("--active-color", "#000");
-    root.style.setProperty("--icon-color", "#fff");
-    root.style.setProperty("--border-color", "#ddd");
-    root.style.setProperty("--iframe-bg", "#fff");
-    root.style.setProperty("--primary-color", "#91dd70ff");
-    themeBtn.innerHTML = '<span></span>Dark';
     monaco.editor.setTheme("vs-dark");
+    theming();
   }
 });
+
+function theming(){
+  if (theme === "vs-dark") {
+  root.style.setProperty("--theme-color", "#242424");
+  root.style.setProperty("--text-color", "#ffffff");
+  root.style.setProperty("--btn-bg", "#333");
+  root.style.setProperty("--active-bg", "#fff");
+  root.style.setProperty("--active-color", "#000");
+  root.style.setProperty("--icon-color", "#fff");
+  root.style.setProperty("--border-color", "#ddd");
+  root.style.setProperty("--iframe-bg", "#fff");
+  root.style.setProperty("--primary-color", "#91dd70ff");
+  themeBtn.innerHTML = "<span></span>Dark";
+} else {
+  root.style.setProperty("--theme-color", "#fffffe");
+  root.style.setProperty("--text-color", "#000000");
+  root.style.setProperty("--btn-bg", "#e0e0e0");
+  root.style.setProperty("--active-bg", "#242424");
+  root.style.setProperty("--active-color", "#ffffff");
+  root.style.setProperty("--icon-color", "#242424");
+  root.style.setProperty("--border-color", "#ddd");
+  root.style.setProperty("--iframe-bg", "#fff");
+  root.style.setProperty("--primary-color", "#659e4dff");
+  themeBtn.innerHTML = "<span></span>Light";
+}
+}
+
+theming();
